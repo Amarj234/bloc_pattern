@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:bloc_pattern/callme/Usermodels.dart';
+
 import 'package:http/http.dart';
 
+import 'callme/product_model.dart';
 import 'usermodel.dart';
 
 class UserRepository {
@@ -25,6 +27,17 @@ class UserRepository {
     if (response.statusCode == 200) {
       var result = jsonDecode(response.body);
       return Usermodels.fromJson(result);
+    } else {
+      throw Exception(response.reasonPhrase);
+    }
+  }
+
+  Future<ProductModel> getmydata2() async {
+    Response response = await get(Uri.parse("https://fakestoreapi.com/products/"));
+
+    if (response.statusCode == 200) {
+      var result = jsonDecode(response.body);
+      return ProductModel.fromJson(result);
     } else {
       throw Exception(response.reasonPhrase);
     }

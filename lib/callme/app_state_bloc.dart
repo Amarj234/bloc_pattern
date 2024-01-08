@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_pattern/callme/Usermodels.dart';
 import 'package:equatable/equatable.dart';
-
 import '../apicall.dart';
-
 part 'app_state_event.dart';
 part 'app_state_state.dart';
 
@@ -15,6 +13,8 @@ class AppStateBloc extends Bloc<AppStateEvent, AppStateState> {
       emit(UserLoadingState2());
       try {
         final users = await _userRepository.getmydata();
+        final userval = await _userRepository.getmydata2();
+
         emit(UserLoadedState2(users));
       } catch (e) {
         emit(UserErrorState2(e.toString()));
@@ -33,7 +33,7 @@ class AppStateBloc extends Bloc<AppStateEvent, AppStateState> {
         int index = val[0].users!.indexWhere((element) => element.id == event.id);
         val[0].users![index].isred = !val[0].users![index].isred;
         print("List<Object?> ${val[0].users![index].email}");
-        emit(UserLoadingState2());
+        emit(AppStateInitial());
         emit(UserLoadedState2(val[0]));
       }
     });
