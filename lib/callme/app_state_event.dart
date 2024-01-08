@@ -8,3 +8,11 @@ class LoadUserEvent extends AppStateEvent {
   @override
   List<Object?> get props => [];
 }
+
+class ChangeUserEvent extends AppStateEvent {
+  final num id;
+  @override
+  ChangeUserEvent({required this.id});
+  @override
+  List<Object?> get props => [id];
+}

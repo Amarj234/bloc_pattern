@@ -5,8 +5,7 @@ import 'dart:convert';
 /// skip : 0
 /// limit : 30
 
-Usermodels UsermodelsFromJson(String str) =>
-    Usermodels.fromJson(json.decode(str));
+Usermodels UsermodelsFromJson(String str) => Usermodels.fromJson(json.decode(str));
 String UsermodelsToJson(Usermodels data) => json.encode(data.toJson());
 
 class Usermodels {
@@ -138,13 +137,11 @@ class Users {
     hair = json['hair'] != null ? Hair.fromJson(json['hair']) : null;
     domain = json['domain'];
     ip = json['ip'];
-    address =
-        json['address'] != null ? Address.fromJson(json['address']) : null;
+    address = json['address'] != null ? Address.fromJson(json['address']) : null;
     macAddress = json['macAddress'];
     university = json['university'];
     bank = json['bank'] != null ? Bank.fromJson(json['bank']) : null;
-    company =
-        json['company'] != null ? Company.fromJson(json['company']) : null;
+    company = json['company'] != null ? Company.fromJson(json['company']) : null;
     ein = json['ein'];
     ssn = json['ssn'];
     userAgent = json['userAgent'];
@@ -155,6 +152,7 @@ class Users {
   String? maidenName;
   num? age;
   String? gender;
+  bool isred = false;
   String? email;
   String? phone;
   String? username;
@@ -292,8 +290,7 @@ class Company {
   });
 
   Company.fromJson(dynamic json) {
-    address =
-        json['address'] != null ? Address.fromJson(json['address']) : null;
+    address = json['address'] != null ? Address.fromJson(json['address']) : null;
     department = json['department'];
     name = json['name'];
     title = json['title'];
@@ -347,9 +344,7 @@ class Address {
   Address.fromJson(dynamic json) {
     address = json['address'];
     city = json['city'];
-    coordinates = json['coordinates'] != null
-        ? Coordinates.fromJson(json['coordinates'])
-        : null;
+    coordinates = json['coordinates'] != null ? Coordinates.fromJson(json['coordinates']) : null;
     postalCode = json['postalCode'];
     state = json['state'];
   }
@@ -388,8 +383,7 @@ class Address {
 /// lat : 36.208114
 /// lng : -86.58621199999999
 
-Coordinates coordinatesFromJson(String str) =>
-    Coordinates.fromJson(json.decode(str));
+Coordinates coordinatesFromJson(String str) => Coordinates.fromJson(json.decode(str));
 String coordinatesToJson(Coordinates data) => json.encode(data.toJson());
 
 class Coordinates {
@@ -496,9 +490,7 @@ class Address2 {
   Address2.fromJson(dynamic json) {
     address = json['address'];
     city = json['city'];
-    coordinates = json['coordinates'] != null
-        ? Coordinates.fromJson(json['coordinates'])
-        : null;
+    coordinates = json['coordinates'] != null ? Coordinates.fromJson(json['coordinates']) : null;
     postalCode = json['postalCode'];
     state = json['state'];
   }
@@ -537,8 +529,7 @@ class Address2 {
 /// lat : 38.867033
 /// lng : -76.979235
 
-Coordinates coordinatesFromJson2(String str) =>
-    Coordinates.fromJson(json.decode(str));
+Coordinates coordinatesFromJson2(String str) => Coordinates.fromJson(json.decode(str));
 String coordinatesToJson2(Coordinates data) => json.encode(data.toJson());
 
 class Coordinates2 {

@@ -13,8 +13,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: const Text('The BloC App')), body: blocBody());
+    return Scaffold(appBar: AppBar(title: const Text('The BloC App')), body: blocBody());
   }
 
   Widget blocBody() {
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
             );
           }
           if (state is UserErrorState) {
-            return const Center(child: Text("Error"));
+            return Center(child: Text("Error ${state.error}"));
           }
           if (state is UserLoadedState) {
             List<UserModel> userList = state.users;
@@ -38,16 +37,13 @@ class HomePage extends StatelessWidget {
                 itemCount: userList.length,
                 itemBuilder: (_, index) {
                   return Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                     child: Card(
                         color: Theme.of(context).primaryColor,
                         child: ListTile(
                             onTap: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AppScreen()));
+                                  context, MaterialPageRoute(builder: (context) => AppScreen()));
                             },
                             title: Text(
                               '${userList[index].firstName}  ${userList[index].lastName}',
@@ -58,8 +54,7 @@ class HomePage extends StatelessWidget {
                               style: const TextStyle(color: Colors.white),
                             ),
                             leading: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  userList[index].avatar.toString()),
+                              backgroundImage: NetworkImage(userList[index].avatar.toString()),
                             ))),
                   );
                 });

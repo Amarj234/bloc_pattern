@@ -18,7 +18,7 @@ class UserLoadedState2 extends AppStateState {
   Usermodels users;
   UserLoadedState2(this.users);
   @override
-  List<Object?> get props => [users];
+  List<Usermodels> get props => [users];
 }
 
 class UserErrorState2 extends AppStateState {

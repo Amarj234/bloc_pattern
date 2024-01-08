@@ -1,7 +1,6 @@
 import 'package:bloc_pattern/callme/Usermodels.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'app_state_bloc.dart';
 
 class ViewScreen extends StatelessWidget {
@@ -15,7 +14,7 @@ class ViewScreen extends StatelessWidget {
           child: CircularProgressIndicator(),
         );
       } else if (state is UserErrorState2) {
-        return const Center(child: Text("Error"));
+        return Center(child: Text("Error ${state.error}"));
       } else if (state is UserLoadedState2) {
         Usermodels userList = state.users;
         return ListView.builder(
@@ -25,25 +24,27 @@ class ViewScreen extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                 child: Card(
-                    color: Theme.of(context).primaryColor,
+                    color: data[index].isred
+                        ? Theme.of(context).splashColor
+                        : Theme.of(context).primaryColor,
                     child: ListTile(
-                      title: Text(
-                        '${data[index].firstName}  ${data[index].lastName}',
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      subtitle: Text(
-                        '${data[index].email}',
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                      // leading: CircleAvatar(
-                      //   backgroundImage:
-                      //       NetworkImage(data[index].image.toString()),
-                      // )
-                    )),
+                        onTap: () {
+                          context.read<AppStateBloc>().add(ChangeUserEvent(id: data[index].id!));
+                        },
+                        title: Text(
+                          '${data[index].firstName}  ${data[index].lastName}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        subtitle: Text(
+                          '${data[index].email}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(data[index].image.toString()),
+                        ))),
               );
             });
       }
-      ;
       return Container();
     });
   }
