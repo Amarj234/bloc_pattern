@@ -1,8 +1,10 @@
 import 'package:bloc_pattern/callme/Usermodels.dart';
+import 'package:bloc_pattern/callme/app_bloc.dart';
 import 'package:bloc_pattern/callme/app_state_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'app_state2.dart';
 
 class ViewScreen extends StatelessWidget {
   const ViewScreen({Key? key}) : super(key: key);
@@ -10,8 +12,13 @@ class ViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppStateBloc>().state;
-  //  final state2 = context.watch<UserApp>().state;
-
+    final state2 = context.watch<AppsBloc>().state;
+    print(state2);
+    if (state2 is UserLoadedState3) {
+      print(state2.userval!.id);
+    } else if (state2 is ErroState) {
+      print("Farah ${state2.error}");
+    }
     if (state is UserLoadingState2) {
       return Center(
         child: CircularProgressIndicator(),

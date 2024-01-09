@@ -13,7 +13,6 @@ class AppStateBloc extends Bloc<AppStateEvent, AppStateState> {
       emit(UserLoadingState2());
       try {
         final users = await _userRepository.getmydata();
-        final userval = await _userRepository.getmydata2();
 
         emit(UserLoadedState2(users));
       } catch (e) {

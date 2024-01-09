@@ -23,7 +23,7 @@ class ProductModel {
   });
 
   ProductModel.fromJson(dynamic json) {
-    id = json['id'];
+    id = json['id'] ?? "";
     title = json['title'];
     price = json['price'];
     description = json['description'];
@@ -36,7 +36,6 @@ class ProductModel {
   num? price;
   String? description;
   String? category;
-  bool isFav = false;
   String? image;
   Rating? rating;
   ProductModel copyWith({

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'ViewScreen.dart';
+import 'app_bloc.dart';
 import 'app_state_bloc.dart';
 
 class AppScreen extends StatefulWidget {
@@ -18,6 +19,7 @@ class _AppScreenState extends State<AppScreen> {
     super.initState();
 
     context.read<AppStateBloc>().add(LoadUserEvent());
+    context.read<AppsBloc>().add(LoadUserEvent2());
   }
 
   @override

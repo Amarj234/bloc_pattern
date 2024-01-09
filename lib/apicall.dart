@@ -33,7 +33,7 @@ class UserRepository {
   }
 
   Future<ProductModel> getmydata2() async {
-    Response response = await get(Uri.parse("https://fakestoreapi.com/products/"));
+    Response response = await get(Uri.parse("https://fakestoreapi.com/products"));
 
     if (response.statusCode == 200) {
       var result = jsonDecode(response.body);

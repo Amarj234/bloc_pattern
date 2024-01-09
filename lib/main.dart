@@ -4,6 +4,7 @@ import 'package:bloc_pattern/callme/app_state_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'callme/app_bloc.dart';
 import 'homepage.dart';
 
 void main() {
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<AppStateBloc>(
             create: (BuildContext context) => AppStateBloc(UserRepository()),
+          ),
+          BlocProvider<AppsBloc>(
+            create: (BuildContext context) => AppsBloc(),
           ),
         ],
         child: MaterialApp(

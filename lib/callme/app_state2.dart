@@ -9,10 +9,11 @@ class UserloadState extends UserApp {
 }
 
 class UserLoadedState3 extends UserApp {
-  final ProductModel userval;
+  final ProductModel? userval;
 
   UserLoadedState3(this.userval);
-  List<ProductModel> get Props => [userval];
+
+  List<Object?> get Props => [userval];
 }
 
 class ErroState extends UserApp {
