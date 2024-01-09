@@ -9,7 +9,7 @@ class UserloadState extends UserApp {
 }
 
 class UserLoadedState3 extends UserApp {
-  final ProductModel? userval;
+  final List<ProductModel> userval;
 
   UserLoadedState3(this.userval);
 

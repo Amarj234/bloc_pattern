@@ -32,12 +32,14 @@ class UserRepository {
     }
   }
 
-  Future<ProductModel> getmydata2() async {
+  Future<List<ProductModel>> getmydata2() async {
     Response response = await get(Uri.parse("https://fakestoreapi.com/products"));
-
+    List<ProductModel> pro = [];
     if (response.statusCode == 200) {
-      var result = jsonDecode(response.body);
-      return ProductModel.fromJson(result);
+      List result = jsonDecode(response.body);
+      result.forEach((e) => pro.add(ProductModel.fromJson(e)));
+
+      return pro;
     } else {
       throw Exception(response.reasonPhrase);
     }

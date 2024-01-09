@@ -73,6 +73,7 @@ class ProductModel {
 
 /// rate : 3.9
 /// count : 120
+//  ranvijay
 
 Rating ratingFromJson(String str) => Rating.fromJson(json.decode(str));
 String ratingToJson(Rating data) => json.encode(data.toJson());

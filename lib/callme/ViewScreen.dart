@@ -15,7 +15,7 @@ class ViewScreen extends StatelessWidget {
     final state2 = context.watch<AppsBloc>().state;
     print(state2);
     if (state2 is UserLoadedState3) {
-      print(state2.userval!.id);
+      print(state2.userval[0].title);
     } else if (state2 is ErroState) {
       print("Farah ${state2.error}");
     }
